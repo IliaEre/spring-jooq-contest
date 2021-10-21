@@ -1,0 +1,19 @@
+# Run docker stack deploy -c stack.yml postgres (or docker-compose -f stack.yml up), 
+# wait for it to initialize completely, 
+# and visit http://swarm-ip:8080, http://localhost:8080, 
+# or http://host-ip:8080 (as appropriate).
+version: '3.1'
+
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: pwd
+    ports:
+      - 5432:5432
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
