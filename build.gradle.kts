@@ -77,4 +77,63 @@ jooqGenerator {
             }
         }
     }
+    configuration("xml", project.java.sourceSets.getByName("main")) {
+        configuration = jooqCodegenConfiguration {
+            jdbc {
+                username = "postgres"
+                password = "pwd"
+                driver = "org.postgresql.Driver"
+                url = "jdbc:postgresql://localhost:5432/postgres"
+            }
+
+            generator {
+                name = "org.jooq.codegen.XMLGenerator"
+                target {
+                    directory = "src/main/resources/generated"
+                }
+                database {
+                    name = "org.jooq.meta.postgres.PostgresDatabase"
+                    inputSchema = "public"
+                    includes = "product|description"
+                }
+            }
+        }
+    }
+    configuration("from-xml", project.java.sourceSets.getByName("main")) {
+        configuration = jooqCodegenConfiguration {
+            generator {
+                database {
+                    name = "org.jooq.meta.xml.XMLDatabase"
+                    inputSchema = "public"
+                    includes = ".*"
+                    properties.add(
+                        org.jooq.meta.jaxb.Property()
+                            .withKey("dialect")
+                            .withValue("postgres")
+                    )
+                    properties.add(
+                        org.jooq.meta.jaxb.Property()
+                            .withKey("xmlFile")
+                            .withValue("src/main/resources/generated/org/jooq/generated/information_schema.xml")
+                    )
+                }
+                generate {
+                    isGeneratedAnnotation = false
+                    isRelations = true
+                    isDeprecated = false
+                    isRecords = true
+                    isImmutablePojos = true
+                    isFluentSetters = true
+                    isJavaTimeTypes = true
+                }
+
+                target {
+                    packageName = "com.epam.jooq"
+                    directory = "./src/main/java/new"
+                }
+            }
+        }
+    }
+
+
 }
