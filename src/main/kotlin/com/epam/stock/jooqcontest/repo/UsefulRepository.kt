@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository
 class UsefulRepository(
     private val dslContext: DSLContext
 ) {
+
     fun findAll(): MutableList<ProductRecord>? =
         dslContext
             .select(p.fields().toList())

@@ -56,7 +56,17 @@ jooqGenerator {
             generator {
                 target {
                     packageName = "com.epam.jooq"
-                    directory = "${project.buildDir}/generated/jooq/primary"
+                    directory = "./src/main/java"
+                }
+
+                generate {
+                    isGeneratedAnnotation = false
+                    isRelations = true
+                    isDeprecated = false
+                    isRecords = true
+                    isImmutablePojos = true
+                    isFluentSetters = true
+                    isJavaTimeTypes = true
                 }
 
                 database {
