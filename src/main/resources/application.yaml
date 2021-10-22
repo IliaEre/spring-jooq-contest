@@ -20,6 +20,12 @@ spring:
       WRITE_DATES_AS_TIMESTAMPS: false
       WRITE_DATE_KEYS_AS_TIMESTAMPS: false
       WRITE_DATE_TIMESTAMPS_AS_NANOSECONDS: false
+  flyway:
+    enabled: true
+    url: "jdbc:postgresql://localhost:5432/postgres"
+    user: postgres
+    password: pwd
+    baseline-on-migrate: true
 
 logging:
   level:

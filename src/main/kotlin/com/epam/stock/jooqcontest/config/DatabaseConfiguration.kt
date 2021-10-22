@@ -12,6 +12,12 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Primary
 import javax.sql.DataSource
 
+/**
+ * We can create own beans and datasource
+ * if we need to connect to two or more DB we should create beans
+ *
+ * we can use @ConfigurationProperties with prefix and use default spring fields
+ * */
 @Configuration
 @ConditionalOnProperty(prefix = "spring.profiles", name = ["active"], havingValue = "custom")
 class DatabaseConfiguration {

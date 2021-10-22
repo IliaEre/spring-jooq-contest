@@ -6,8 +6,11 @@ plugins {
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
     kotlin("jvm") version "1.5.31"
     kotlin("plugin.spring") version "1.5.31"
+
     // follow here: https://github.com/rohanprabhu/kotlin-dsl-gradle-jooq-plugin
     id("com.rohanprabhu.kotlin-dsl-jooq") version "0.4.6"
+    // follow here: https://flywaydb.org/documentation/getstarted/firststeps/gradle
+    id ("org.flywaydb.flyway") version "8.0.2"
 }
 
 group = "com.epam.stock"
@@ -28,6 +31,8 @@ dependencies {
     // added jooq generator
     jooqGeneratorRuntime("org.postgresql:postgresql:42.1.4")
     runtimeOnly("org.postgresql:postgresql")
+    // https://mvnrepository.com/artifact/org.flywaydb/flyway-core
+    implementation("org.flywaydb:flyway-core:8.0.1")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
@@ -134,4 +139,22 @@ jooqGenerator {
             }
         }
     }
+}
+
+flyway {
+    url = "jdbc:postgresql://localhost:5432/postgres"
+    user = "postgres"
+    password = "pwd"
+}
+
+tasks.getByName("jooq-codegen-from-xml") {
+    enabled = false
+}
+
+tasks.getByName("jooq-codegen-xml") {
+    enabled = false
+}
+
+tasks.getByName("jooq-codegen-primary") {
+    enabled = false
 }
