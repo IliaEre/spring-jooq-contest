@@ -1,16 +1,15 @@
-package com.epam.stock.jooqcontest.repo
+package com.epam.demo.jooqcontest.repo
 
 import com.epam.jooq.Tables
 import com.epam.jooq.tables.records.ProductRecord
-import com.epam.stock.jooqcontest.dto.Product
+import com.epam.demo.jooqcontest.dto.ProductDto
+import com.epam.jooq.tables.Description
 import org.jooq.DSLContext
 import org.jooq.impl.DSL
 import org.springframework.stereotype.Repository
 
 @Repository
-class UsefulRepository(
-    private val dslContext: DSLContext
-) {
+class ProductRepository(private val dslContext: DSLContext) {
 
     fun findAll(): MutableList<ProductRecord>? =
         dslContext
@@ -35,21 +34,21 @@ class UsefulRepository(
             .limit(1)
             .fetchOneInto(String::class.java)
 
-    fun create(product: Product): Boolean =
+    fun create(productDto: ProductDto): Boolean =
         dslContext.transactionResult { ctx ->
             ctx.dsl()
                 .insertInto(p, p.NAME, p.CATEGORY_ID, p.VENDOR, p.PRICE)
                 .select(
                     DSL.select(
-                        DSL.value(product.name),
-                        DSL.value(product.categoryId),
-                        DSL.value(product.vendor),
-                        DSL.value(product.price)
+                        DSL.value(productDto.name),
+                        DSL.value(productDto.categoryId),
+                        DSL.value(productDto.vendor),
+                        DSL.value(productDto.price)
                     )
                         .where(
                             DSL.notExists(
                                 DSL.selectOne().from(p)
-                                    .where(p.NAME.eq(product.name))
+                                    .where(p.NAME.eq(productDto.name))
                             )
                         )
                 )
@@ -57,7 +56,8 @@ class UsefulRepository(
         }
 
     private companion object {
-        val p = Tables.PRODUCT
-        val d = Tables.DESCRIPTION
+        val p: com.epam.jooq.tables.Product = Tables.PRODUCT
+        val d: Description = Tables.DESCRIPTION
     }
+
 }

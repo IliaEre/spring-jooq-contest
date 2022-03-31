@@ -1,8 +1,8 @@
-package com.epam.stock.jooqcontest.dto
+package com.epam.demo.jooqcontest.dto
 
 import java.math.BigDecimal
 
-data class Product(
+data class ProductDto(
     val id: Int,
     val name: String?,
     val price: BigDecimal,

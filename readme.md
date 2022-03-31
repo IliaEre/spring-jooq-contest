@@ -1,5 +1,5 @@
 ## Simple service with JOOQ
-### version 0.0.1
+### version 0.0.2
 
 ##### Warning! The service is just simple example, you shouldn't use the same configuration on production aria.
 
@@ -15,7 +15,7 @@ id("com.rohanprabhu.kotlin-dsl-jooq") version "0.4.6"
 
 2) dependencies:
 ```kotlin
-    jooqGeneratorRuntime("org.postgresql:postgresql:42.1.4")
+    jooqGeneratorRuntime("org.postgresql:postgresql:${VERSION}")
     runtimeOnly("org.postgresql:postgresql")
 ```
 
@@ -30,8 +30,3 @@ id("com.rohanprabhu.kotlin-dsl-jooq") version "0.4.6"
 #### Exrta:
 >`jooq-contest-maven` folder with maven samples
 ---
-
-What next?
-1) tests
-2) test containers
-3) code style

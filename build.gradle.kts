@@ -6,15 +6,14 @@ plugins {
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
     kotlin("jvm") version "1.5.31"
     kotlin("plugin.spring") version "1.5.31"
-
-    // follow here: https://github.com/rohanprabhu/kotlin-dsl-gradle-jooq-plugin
+    // follow the link: https://github.com/rohanprabhu/kotlin-dsl-gradle-jooq-plugin
     id("com.rohanprabhu.kotlin-dsl-jooq") version "0.4.6"
-    // follow here: https://flywaydb.org/documentation/getstarted/firststeps/gradle
+    // follow the link: https://flywaydb.org/documentation/getstarted/firststeps/gradle
     id ("org.flywaydb.flyway") version "8.0.2"
 }
 
-group = "com.epam.stock"
-version = "0.0.1"
+group = "com.epam.demo"
+version = "0.0.2"
 java.sourceCompatibility = JavaVersion.VERSION_11
 
 repositories {
@@ -22,18 +21,16 @@ repositories {
 }
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-actuator")
-    implementation("org.springframework.boot:spring-boot-starter-jooq")
-    implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+    implementation("org.springframework.boot:spring-boot-starter-actuator:2.6.5")
+    implementation("org.springframework.boot:spring-boot-starter-jooq:2.6.5")
+    implementation("org.springframework.boot:spring-boot-starter-web:2.6.5")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.2")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    // added jooq generator
-    jooqGeneratorRuntime("org.postgresql:postgresql:42.1.4")
-    runtimeOnly("org.postgresql:postgresql")
-    // https://mvnrepository.com/artifact/org.flywaydb/flyway-core
-    implementation("org.flywaydb:flyway-core:8.0.1")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    jooqGeneratorRuntime("org.postgresql:postgresql:42.3.3")
+    runtimeOnly("org.postgresql:postgresql:42.3.3")
+    implementation("org.flywaydb:flyway-core:8.5.4")
+    testImplementation("org.springframework.boot:spring-boot-starter-test:2.6.5")
 }
 
 tasks.withType<KotlinCompile> {
