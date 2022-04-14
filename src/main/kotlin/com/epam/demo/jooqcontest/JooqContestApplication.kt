@@ -1,4 +1,4 @@
-package com.epam.stock.jooqcontest
+package com.epam.demo.jooqcontest
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

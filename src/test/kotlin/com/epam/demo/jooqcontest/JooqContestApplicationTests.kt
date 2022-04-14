@@ -1,4 +1,4 @@
-package com.epam.stock.jooqcontest
+package com.epam.demo.jooqcontest
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
