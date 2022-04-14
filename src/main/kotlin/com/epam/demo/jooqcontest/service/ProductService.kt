@@ -2,7 +2,7 @@ package com.epam.demo.jooqcontest.service
 
 import com.epam.jooq.tables.records.ProductRecord
 import com.epam.demo.jooqcontest.dto.ProductDto
-import com.epam.demo.jooqcontest.repo.ProductRepository
+import com.epam.demo.jooqcontest.repository.ProductRepository
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 

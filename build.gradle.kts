@@ -6,9 +6,7 @@ plugins {
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
     kotlin("jvm") version "1.5.31"
     kotlin("plugin.spring") version "1.5.31"
-    // follow the link: https://github.com/rohanprabhu/kotlin-dsl-gradle-jooq-plugin
     id("com.rohanprabhu.kotlin-dsl-jooq") version "0.4.6"
-    // follow the link: https://flywaydb.org/documentation/getstarted/firststeps/gradle
     id ("org.flywaydb.flyway") version "8.0.2"
 }
 
@@ -21,16 +19,16 @@ repositories {
 }
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-actuator:2.6.5")
-    implementation("org.springframework.boot:spring-boot-starter-jooq:2.6.5")
-    implementation("org.springframework.boot:spring-boot-starter-web:2.6.5")
+    implementation("org.springframework.boot:spring-boot-starter-actuator:2.6.6")
+    implementation("org.springframework.boot:spring-boot-starter-jooq:2.6.6")
+    implementation("org.springframework.boot:spring-boot-starter-web:2.6.6")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.2")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     jooqGeneratorRuntime("org.postgresql:postgresql:42.3.3")
     runtimeOnly("org.postgresql:postgresql:42.3.3")
-    implementation("org.flywaydb:flyway-core:8.5.4")
-    testImplementation("org.springframework.boot:spring-boot-starter-test:2.6.5")
+    implementation("org.flywaydb:flyway-core:8.5.7")
+    testImplementation("org.springframework.boot:spring-boot-starter-test:2.6.6")
 }
 
 tasks.withType<KotlinCompile> {

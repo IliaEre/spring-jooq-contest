@@ -1,4 +1,4 @@
-package com.epam.demo.jooqcontest.repo
+package com.epam.demo.jooqcontest.repository
 
 import com.epam.jooq.Tables
 import com.epam.jooq.tables.records.ProductRecord
