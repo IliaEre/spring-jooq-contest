@@ -1,7 +1,7 @@
 ## Simple service with JOOQ
 ### version 0.0.2
 
-##### Warning! The service is just simple example, you shouldn't use the same configuration on production aria.
+##### Warning! The service is a simple example, you shouldn't use the same configuration on production aria.
 
 I highly recommend reading links:  
 * I used gradle plugin for kts and jooq: [gradle plugin](https://github.com/rohanprabhu/kotlin-dsl-gradle-jooq-plugin)  
